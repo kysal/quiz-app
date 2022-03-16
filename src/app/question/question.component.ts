@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
-class Question {
+export class Question {
   public questionText: string;
   public guesses: string[];
   public answer: string;
@@ -21,20 +21,16 @@ class Question {
 })
 export class QuestionComponent implements OnInit {
 
-  questions: Question[] = [
-    new Question('What is 1 + 2', ['1','2','3','4'], '3'),
-    new Question('What is 5 + 6', ['10','11','12','13'], '11')
-  ];
-  question: number = 0;
+  @Input() currentQuestion: Question = new Question("null", [], "null");
+  disabled: boolean = false;
 
   ngOnInit() {
-    this.question = 0;
   }
 
   answer(box: string) {
-    if (this.questions[this.question].answer == box) {
+    this.disabled = true;
+    if (this.currentQuestion.answer == box) {
       console.log("Correct!")
-      this.question++;
     } else {
       console.log("Incorrect!")
     }

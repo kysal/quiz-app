@@ -1,0 +1,56 @@
+<h1>Quiz Creation Tool</h1>
+<form [formGroup]="quizForm">
+  <h2>Quiz Details</h2>
+  <mat-form-field appearance="fill">
+    <mat-label>Quiz Title</mat-label>
+    <input matInput formControlName="title" type="text">
+  </mat-form-field>
+  <div formArrayName="questions">
+    <h2>Questions</h2>
+    <div class="question-card" *ngFor="let q of questions.controls; let i = index" [formGroupName]="i">
+      <mat-card>
+        <mat-card-title>Question {{i+1}}</mat-card-title>
+        <mat-card-content>
+          <mat-form-field appearance="fill">
+            <mat-label>Question Title</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Answer</mat-label>
+            <input matInput formControlName="answer">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Marks Awarded</mat-label>
+            <input matInput formControlName="marks" type="number">
+          </mat-form-field>
+          <br>
+          <p><mat-checkbox formControlName="addToQB">Add to Question Bank</mat-checkbox></p>
+        </mat-card-content>
+        <mat-card-footer>
+          <button mat-raised-button color="warn">Delete</button>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+
+
+
+
+  <div>
+    <button mat-raised-button color="primary" type="button" (click)="createNewQuestion()">Create New Question</button>
+    <!-- Not Yet Implemented -->
+    <button mat-raised-button color="primary" type="button" disabled>Pull Question From Bank</button>
+    <div>
+      <button mat-raised-button type="submit">Create Quiz</button>
+    </div>
+  </div>
+
+
+</form>

@@ -1,16 +1,16 @@
 <table>
-  <tr>
-    <h2>{{questions[question].questionText}}</h2>
+  <tr class="top">
+    <h2>{{currentQuestion.questionText}}</h2>
   </tr>
-  <tr>
+  <tr class="bot">
     <table>
       <tr>
-        <td><button (click)="answer(questions[question].guesses[0])">{{questions[question].guesses[0]}}</button></td>
-        <td><button (click)="answer(questions[question].guesses[1])">{{questions[question].guesses[1]}}</button></td>
+        <td><button mat-raised-button class="block" (click)="answer(currentQuestion.guesses[0])" [disabled]="disabled">{{currentQuestion.guesses[0]}}</button></td>
+        <td><button mat-raised-button class="block" (click)="answer(currentQuestion.guesses[1])" [disabled]="disabled">{{currentQuestion.guesses[1]}}</button></td>
       </tr>
       <tr>
-        <td><button (click)="answer(questions[question].guesses[2])">{{questions[question].guesses[2]}}</button></td>
-        <td><button (click)="answer(questions[question].guesses[3])">{{questions[question].guesses[3]}}</button></td>
+        <td><button mat-raised-button class="block" (click)="answer(currentQuestion.guesses[2])" [disabled]="disabled">{{currentQuestion.guesses[2]}}</button></td>
+        <td><button mat-raised-button class="block" (click)="answer(currentQuestion.guesses[3])" [disabled]="disabled">{{currentQuestion.guesses[3]}}</button></td>
       </tr>
     </table>
   </tr>
